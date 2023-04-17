@@ -10,7 +10,7 @@ var hrten;
 var hdiff;
 
 var digsize
-
+var playing=false;
 var cx, cy;
 var d;
 var secunitdig;
@@ -31,23 +31,20 @@ function preload() {
   sound = loadSound("bell.mp3");
   tick = loadSound("tick-tock-15.mp3");
 }
-
+function mousePressed(){
+  if(!playing)
+  {
+    tick.loop()
+    playing=true;
+  }
+}
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
   //tick.setVolume(0.7)
   tick.loop()
   digsize=max(height/23,width/30)
-  //let lastHour = -1;
-  //playHourlySound();
 
-  // secunitdig = new Digit(secunit, width-(cx-170) , height-hdiff);
-  // sectendig  = new Digit(secten,  width-(cx-110), height-hdiff);
-  // minunitdig = new Digit(minunit, width-(cx-30), height-hdiff);
-  // mintendig  = new Digit(minten,  width-(cx+30), height-hdiff);
-  // hrunitdig  = new Digit(hrunit,  width-(cx+110), height-hdiff);
-  // hrtendig   = new Digit(hrten,   width-(cx+170), height-hdiff);
-  // let hdiff=(1/5)*height;
 }
 
 function playHourlySound() {
@@ -94,8 +91,7 @@ function draw() {
   } else {
     daytime = false;
   }
-  //stroke(0)
-  //line(0,height-hdiff,width,height-hdiff);
+
   //analogue part;
   hr = hour() % 12;
   mn = minute();
@@ -220,20 +216,14 @@ function draw() {
   sectendig.display();
   ellipse(cx + 70, height - hdiff + 20, 10, 10);
   ellipse(cx + 70, height - hdiff + 60, 10, 10);
-  //  ellipse(width-180,height-40,10,10)
-  //  ellipse(width-180,height-80,10,10)
 
   minunitdig.display();
   mintendig.display();
   ellipse(cx - 70, height - hdiff + 20, 10, 10);
   ellipse(cx - 70, height - hdiff + 60, 10, 10);
-  //  ellipse(width-320,height-40,10,10)
-  //  ellipse(width-320,height-80,10,10)
+
 
   hrunitdig.display();
   hrtendig.display();
-  //fill(moonimg)
 
-  //image(moonimg,cx+d/2,cy-d/2,d/4,d/4)
-  //console.log(hour())
 }
