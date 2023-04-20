@@ -31,6 +31,17 @@ function preload() {
   sound = loadSound("bell.mp3");
   tick = loadSound("tick-tock-15.mp3");
 }
+
+function touchEnded() {
+//     valueX = mouseX % 255;
+//     valueY = mouseY % 255;
+  if(!playing)
+  {
+    tick.loop()
+    playing=true;
+  }
+}
+
 function mousePressed(){
   if(!playing)
   {
